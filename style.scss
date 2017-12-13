@@ -1,0 +1,90 @@
+$background-color: #adb4c1;
+$bar-color: #9ca2b1;
+$anchor-color: #b5c4ce;
+$editor-color: #c7dfdd;
+$border-radius: 10px 10px 0 0;
+$far-border-radius: 10px;
+$container-box-shadow: 0vw .5vw 1.5vw 0.5vw grey;
+$icon-size: 2vw;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: $background-color;
+}
+
+.container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 90%;
+  width: 90%;
+  border: {
+    radius: $border-radius;
+  }
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  box-shadow: $container-box-shadow;
+}
+
+.bar {
+  background-color: $bar-color;
+  flex: 0.1;
+  border: {
+    radius: $border-radius;
+  }
+  display: flex;
+  flex-flow: row;
+
+  a {
+    color: black;
+    flex: 0.1;
+    display: flex;
+    align-items: center;
+    text: {
+      align: center;
+      decoration: none;
+    }
+    background-color: $anchor-color;
+
+    &:hover {
+      background-color: $editor-color;
+    }
+
+    &.far-left {
+      border-top-left-radius: $far-border-radius;
+    }
+
+    &.far-right {
+      border-top-right-radius: $far-border-radius;
+    }
+
+    i {
+      flex: 1;
+      font-size: $icon-size;
+    }
+  }
+}
+
+#editor {
+  background-color: $editor-color;
+  flex: 0.9;
+  padding: 1vw;
+
+  &:focus{
+    outline: 0;
+  }
+}
