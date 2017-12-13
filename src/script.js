@@ -12,6 +12,11 @@ editor.document.designMode = 'On';
         child.innerHTML = child.textContent === 'abc' ? '&lt/&gt' : 'abc';
         //TODO
         break;
+      case 'formatBlock':
+        editor.focus();
+        editor.document.execCommand(command, false, 'H1');
+        editor.focus();
+        break;
       default:
         editor.focus();
         editor.document.execCommand(command, false, null);
