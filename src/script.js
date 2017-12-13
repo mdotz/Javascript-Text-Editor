@@ -1,10 +1,13 @@
-const anchors = document.querySelector('a');
-const editArea = document.getElementById('editor');
+editor.document.designMode = 'On';
 
-anchors.addEventListener('click', function(e){
-  editor.focus();
-  let command = e.target.getAttribute('data-command');
+[].forEach.call(document.getElementsByTagName('a'), v => {
+  v.addEventListener('click', function(e){
 
-  document.execCommand(command, false, null);
-  editor.focus();
+    //Using currentTarget insead of target due to propagation
+    let command = e.currentTarget.getAttribute('data-command');
+
+    editor.focus();
+    editor.document.execCommand(command, false, null);
+    editor.focus();
+  })
 });

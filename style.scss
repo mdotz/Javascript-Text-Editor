@@ -83,8 +83,8 @@ body {
   background-color: $editor-color;
   flex: 0.9;
   padding: 1vw;
+  border: none;
 
   &:focus{
-    outline: 0;
   }
 }
