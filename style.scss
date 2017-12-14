@@ -15,7 +15,7 @@ $icon-size: 1.6vw;
 }
 
 body, html {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
 }
 
@@ -60,6 +60,7 @@ body {
       flex: 0.1;
       display: flex;
       align-items: center;
+      justify-content: center;
       text: {
         align: center;
         decoration: none;
@@ -79,13 +80,19 @@ body {
       }
 
       i {
-        flex: 1;
         font-size: $icon-size;
+
+        &.fa.fa-font.fore {
+          color: black;
+          text-decoration: underline;
+        }
+
+        &.fa.fa-font.back {
+          background: white;
+        }
       }
     }
   }
-
-
 }
 
 #editor {
