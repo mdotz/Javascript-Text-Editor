@@ -15,7 +15,7 @@ $icon-size: 1.6vw;
 }
 
 body, html {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
 }
 
@@ -83,12 +83,12 @@ body {
         font-size: $icon-size;
 
         &.fa.fa-font.fore {
-          color: black;
+          color: #ff6961;
           text-decoration: underline;
         }
 
         &.fa.fa-font.back {
-          background: white;
+          background: #779ecb;
         }
       }
     }
@@ -103,4 +103,8 @@ body {
 
   &:focus{
   }
+}
+
+.hidden {
+  display: none;
 }
