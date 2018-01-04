@@ -54,6 +54,15 @@ body {
     flex:1;
     display: flex;
     flex-flow: row;
+    background-color: $anchor-color;
+    border-top-left-radius: $far-border-radius;
+    border-top-right-radius: $far-border-radius;
+
+    &.active {
+      a {
+        background-color: $background-color;
+      }
+    }
 
     a {
       color: black;
@@ -67,6 +76,14 @@ body {
       }
       background-color: $anchor-color;
 
+      &.fill {
+        background-color: $anchor-color;
+
+        &:hover{
+          background-color: $anchor-color;
+        }
+      }
+
       &:hover {
         background-color: $focus-color;
       }
@@ -77,6 +94,18 @@ body {
 
       &.far-right {
         border-top-right-radius: $far-border-radius;
+      }
+
+      &.ext {
+        font-size: 2vw;
+      }
+
+      &.active {
+        background-color: $background-color;
+        border: {
+          top-right-radius: $far-border-radius;
+          top-left-radius: $far-border-radius;
+        }
       }
 
       i {

@@ -10,29 +10,29 @@
       <div class="bar" id="bar">
         <div class="row">
           <a href="#" class="far-left std" data-command='bold'><i class="fa fa-bold" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='italic'><i class="fa fa-italic" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='underline'><i class="fa fa-underline" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='justifyLeft'><i class="fa fa-align-left" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='justifyCenter'><i class="fa fa-align-center" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='justifyRight'><i class="fa fa-align-right" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='justifyFull'><i class="fa fa-align-justify" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='insertOrderedList'><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='insertUnorderedList'><i class="fa fa-list-ul" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='src' class="far-right"><i>abc</i></a>
+          <a href="#" data-command='italic'><i class="fa fa-italic" aria-hidden="true"></i></a>
+          <a href="#" data-command='underline'><i class="fa fa-underline" aria-hidden="true"></i></a>
+          <a href="#" data-command='justifyLeft'><i class="fa fa-align-left" aria-hidden="true"></i></a>
+          <a href="#" data-command='justifyCenter'><i class="fa fa-align-center" aria-hidden="true"></i></a>
+          <a href="#" data-command='justifyRight'><i class="fa fa-align-right" aria-hidden="true"></i></a>
+          <a href="#" data-command='justifyFull'><i class="fa fa-align-justify" aria-hidden="true"></i></a>
+          <a href="#" data-command='insertOrderedList'><i class="fa fa-list-ol" aria-hidden="true"></i></a>
+          <a href="#" data-command='insertUnorderedList'><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+          <a href="#" class="far-right" data-command='src'><i>abc</i></a>
         </div>
         <div class="row">
-          <a href="#" class="std" data-command='undo'><i class="fa fa-undo" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='redo'><i class="fa fa-repeat" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='formatBlock'><i class="fa fa-header" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='indent'><i class="fa fa-indent" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='outdent'><i class="fa fa-outdent" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='subscript'><i class="fa fa-subscript" aria-hidden="true"></i></a>
-          <a href="#" class="std" data-command='superscript'><i class="fa fa-superscript" aria-hidden="true"></i></a>
-          <a href="#" class="" data-command=''><i class="fa fa-font" aria-hidden="true"></i></a>
+          <a href="#" data-command='undo'><i class="fa fa-undo" aria-hidden="true"></i></a>
+          <a href="#" data-command='redo'><i class="fa fa-repeat" aria-hidden="true"></i></a>
+          <a href="#" data-command='formatBlock'><i class="fa fa-header" aria-hidden="true"></i></a>
+          <a href="#" data-command='indent'><i class="fa fa-indent" aria-hidden="true"></i></a>
+          <a href="#" data-command='outdent'><i class="fa fa-outdent" aria-hidden="true"></i></a>
+          <a href="#" data-command='subscript'><i class="fa fa-subscript" aria-hidden="true"></i></a>
+          <a href="#" data-command='superscript'><i class="fa fa-superscript" aria-hidden="true"></i></a>
+          <a href="#" id="font"><i class="fa fa-font" aria-hidden="true"></i></a>
           <a href="#" class="picker" id="fore"><i class="fa fa-font fore" aria-hidden="true"></i></a>
           <a href="#" class="picker" id="back"><i class="fa fa-font back" aria-hidden="true"></i></a>
         </div>
-        <div id="color-row" class="hidden">
+        <div id="color-row" class="hidden active">
           <a href="#" class="ext"><i class="fa fa-circle" aria-hidden="true"></i></a>
           <a href="#" class="ext"><i class="fa fa-circle" aria-hidden="true"></i></a>
           <a href="#" class="ext"><i class="fa fa-circle" aria-hidden="true"></i></a>
@@ -44,8 +44,17 @@
           <a href="#" class="ext"><i class="fa fa-circle" aria-hidden="true"></i></a>
           <a href="#" class="ext"><i class="fa fa-circle" aria-hidden="true"></i></a>
         </div>
-        <div id="font-row">
-
+        <div id="font-row" class="hidden active">
+          <a href="#" class="fill"></a>
+          <a href="#" class="fill"></a>
+          <a href="#" class="ext">1</a>
+          <a href="#" class="ext">2</a>
+          <a href="#" class="ext">3</a>
+          <a href="#" class="ext">4</a>
+          <a href="#" class="ext">5</a>
+          <a href="#" class="ext">6</a>
+          <a href="#" class="ext">7</a>
+          <a href="#" class="fill"></a>
         </div>
       </div>
       <iframe id="editor" name="editor">

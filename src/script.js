@@ -1,56 +1,135 @@
 editor.document.designMode = 'On';
+
 const colors = ['#ffffff' ,'#d3d3d3' ,'#000000','#c00000','#ff0000',
                 '#ffc000','#ffff00','#92d050',
                 '#00b050', '#00b0f0'];
-
-const colorIcons =
-          document.getElementById('color-row').getElementsByTagName('i');
-
 let foreColorState = false;
+let fontSizeAnchors = document.getElementById('font-row').getElementsByTagName('a');
+let colorIcons =
+          document.getElementById('color-row').getElementsByTagName('i');
+let bar = document.getElementById('bar');
+let fontRow = document.getElementById('font-row');
+let colorRow = document.getElementById('color-row');
+let edit = document.getElementById('editor');
+let barStyle = getComputedStyle(bar);
+let editStyle = getComputedStyle(edit);
+let foreAnchor = document.getElementById('fore');
+let backAnchor = document.getElementById('back');
+let fontAnchor = document.getElementById('font');
+let anchors = [foreAnchor, backAnchor, fontAnchor];
 
-////////////////
-
-document.getElementById('fore').addEventListener('click', function(e){
+// For determining fore/back color bar option is enabled
+foreAnchor.addEventListener('click', function(e){
   foreColorState = true;
 });
 
-document.getElementById('back').addEventListener('click', function(e){
+backAnchor.addEventListener('click', function(e){
   foreColorState = false;
 });
+
+///////////////////////////////////////////////////
+/*             THIRD BAR EVENT HANDLERS          */
+///////////////////////////////////////////////////
+for(let i = 0; i < fontSizeAnchors.length; i++){
+  fontSizeAnchors[i].addEventListener('click', e => {
+    editor.document.execCommand('fontSize', false, i+1);
+  });
+}
 
 for(let i = 0; i < colors.length; i++){
   colorIcons[i].style.color = colors[i];
   colorIcons[i].style.fontSize = '3vw';
-  //console.log(colorIcons[i].parentNode);
   colorIcons[i].parentNode.addEventListener('click', function(e){
     let command = foreColorState ? 'foreColor' : 'hiliteColor';
     editor.document.execCommand(command, false, colors[i]);
   })
 }
 
-////////////////
+///////////////////////////////////////////////////
+/*            FONT ANCHOR EVENT HANDLER          */
+///////////////////////////////////////////////////
+fontAnchor.addEventListener('click', function(e){
+
+  if(colorRow.classList.contains('hidden')){
+    toggleBarFlex();
+    toggleRow(fontRow);
+  }
+  else{
+    hideRow(colorRow);
+    toggleRow(fontRow);
+  }
+
+  if(fontRow.classList.contains('hidden')){
+    toggleActiveAnchor(null);
+  }
+  else {
+    toggleActiveAnchor(fontAnchor);
+  }
+});
+
+
+///////////////////////////////////////////////////
+/*           COLOR ANCHORS EVENT HANDLER         */
+///////////////////////////////////////////////////
 let previousTarget;
 
 [].forEach.call(document.getElementsByClassName('picker'), v => {
   v.addEventListener('click', function(e) {
-    let bar = document.getElementById('bar');
-    let row = document.getElementById('color-row');
-    let edit = document.getElementById('editor');
-    let barStyle = getComputedStyle(bar);
-    let editStyle = getComputedStyle(edit);
+
 
     if((previousTarget == null || previousTarget === e.currentTarget)
-        || row.classList.contains('hidden')){
-      edit.style.flex = editStyle.flexGrow == 0.85 ? 0.775 : 0.85;
-      bar.style.flex = barStyle.flexGrow == 0.15 ? 0.225 : 0.15;
-      row.classList.toggle('row');
-      row.classList.toggle('hidden');
+        || colorRow.classList.contains('hidden')){
+          if(fontRow.classList.contains('hidden')){
+            toggleBarFlex();
+            toggleRow(colorRow);
+          }
+          else {
+            hideRow(fontRow);
+            toggleRow(colorRow);
+          }
+    }
+
+    if(colorRow.classList.contains('hidden')){
+      toggleActiveAnchor(null);
+    }
+    else{
+      if(foreColorState){
+        toggleActiveAnchor(foreAnchor);
+      }
+      else {
+        toggleActiveAnchor(backAnchor);
+      }
     }
 
     previousTarget = e.currentTarget;
   });
 });
 
+function toggleBarFlex(){
+  edit.style.flex = editStyle.flexGrow == 0.85 ? 0.775 : 0.85;
+  bar.style.flex = barStyle.flexGrow == 0.15 ? 0.225 : 0.15;
+}
+function toggleRow(row){
+  row.classList.toggle('row');
+  row.classList.toggle('hidden');
+}
+function hideRow(row){
+  row.classList.add('hidden');
+  row.classList.remove('row');
+}
+
+function toggleActiveAnchor(activeAnchor){
+  anchors.forEach(a => {
+    a.classList.remove('active');
+  })
+  if(activeAnchor != null){
+    activeAnchor.classList.add('active');
+  }
+}
+
+///////////////////////////////////////////////////
+/*           STATIC ANCHORS EVENT HANDLER        */
+///////////////////////////////////////////////////
 [].forEach.call(document.getElementsByClassName('std'), v => {
   v.addEventListener('click', function(e){
 
@@ -68,20 +147,6 @@ let previousTarget;
         editor.document.execCommand(command, false, 'H1');
         editor.focus();
         break;
-      /*case 'fontColor':
-        let bar = document.getElementById('bar');
-        let row = document.getElementById('back-color-row');
-        let edit = document.getElementById('editor');
-        let barStyle = getComputedStyle(bar);
-        let editStyle = getComputedStyle(edit);
-
-        if(previousTarget == null || previousTarget === e.currentTarget){
-          edit.style.flex = editStyle.flexGrow == 0.85 ? 0.775 : 0.85;
-          bar.style.flex = barStyle.flexGrow == 0.15 ? 0.225 : 0.15;
-          row.classList.toggle('row');
-          row.classList.toggle('hidden');
-        }
-        break;*/
       default:
         editor.focus();
         editor.document.execCommand(command, false, null);
